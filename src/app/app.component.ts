@@ -19,7 +19,7 @@ export class AppComponent {
   }
 
   public openLoginModal(): void {
-   const modalRef = this.modalService.open(LoginComponent);
+   const modalRef = this.modalService.open(LoginComponent, {backdrop: 'static'});
    modalRef.componentInstance.loggedIn.subscribe((loggedIn: boolean) => {
     if (loggedIn)
       this.isLoggedIn = true;

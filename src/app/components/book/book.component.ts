@@ -24,7 +24,7 @@ export class BookComponent {
   }
 
   openEditModal(): void {
-    const modalRef = this.modalService.open(EditBookComponent);
+    const modalRef = this.modalService.open(EditBookComponent, {backdrop: 'static'});
     modalRef.componentInstance.book = this.book;
     modalRef.componentInstance.bookEdited.subscribe((bookEdited: boolean) => {
       if (bookEdited) {

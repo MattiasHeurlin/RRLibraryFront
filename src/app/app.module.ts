@@ -11,6 +11,7 @@ import { BookComponent } from './components/book/book.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { EditBookComponent } from './components/edit-book/edit-book.component';
 import { QuotesComponent } from './components/quotes/quotes.component';
+import { NewUserComponent } from './components/new-user/new-user.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { QuotesComponent } from './components/quotes/quotes.component';
     AddBookComponent,
     EditBookComponent,
     QuotesComponent,
+    NewUserComponent,
   ],
   imports: [
     BrowserModule,

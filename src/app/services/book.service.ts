@@ -7,7 +7,7 @@ import { Book } from '../models/Book';
   providedIn: 'root'
 })
 export class BookService {
-  private apiUrl = 'rrlibrary.azurewebsites.net/api/';
+  private apiUrl = 'https://rrlibrary.azurewebsites.net/api/';
   constructor(private http: HttpClient) { }
 
   getBooks(): Observable<HttpResponse<Book[]>> {

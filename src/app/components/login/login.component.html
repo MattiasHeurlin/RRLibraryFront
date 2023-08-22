@@ -1,7 +1,8 @@
-    <div class="modal-header centerChild">
-        <h4 class="modal-title">Login</h4>
-    </div>
-    <div class="modal-body">
+<div class="modal-header centerChild">
+    <h4 class="modal-title">Login</h4>
+</div>
+<div class="modal-body">
+    <div *ngIf="!signUp">
         <form>
             <div class="form-outline mb-4">
                 <label class="form-label text-info" for="nameInput">Name:</label>
@@ -12,15 +13,25 @@
                 <input type="password" id="passInput" class="form-control" [(ngModel)]="password" name="password" />
             </div>
         </form>
+            <p (click)="toggleSignUp()" class="fit-content text-info sign-up"> Sign up</p>
         <div class="centerChild">
             <p *ngIf="invalidLoggin" class="text-warning text-center">{{invalidLogginMsg}}</p>
         </div>
     </div>
-    <div class="modal-footer">
-        <div class="container">
-            <div class="d-flex justify-content-between">
-                <button type="button" class="btn " (click)="close()"><fa-icon class="text-danger fs-3" [icon]="faTimes"></fa-icon></button>
-                <button type="button" class="btn btn-success" (click)="onLogin()">Login</button>
-            </div>
+    <div *ngIf="signUp">
+       <fa-icon (click)="toggleSignUp()" class="text-danger fs-3 closeIcon" [icon]="faTimes"></fa-icon>
+        <app-new-user *ngIf="signUp" (userCreated)="onNewSignUp()"></app-new-user>
+    </div>
+    <div class="centerChild text-success" *ngIf="newUserCreated">
+        <p>You have been Signup!</p>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn " (click)="close()"><fa-icon class="text-danger fs-3"
+                    [icon]="faTimes"></fa-icon></button>
+            <button *ngIf="!signUp" type="button" class="btn btn-success" (click)="onLogin()">Login</button>
         </div>
     </div>
+</div>

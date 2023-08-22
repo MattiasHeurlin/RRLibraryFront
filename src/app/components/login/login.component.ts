@@ -14,9 +14,9 @@ import { Token } from '../../models/Token';
 export class LoginComponent {
   @Output() loggedIn = new EventEmitter<boolean>();
 
-
+  signUp: boolean = false;
   faTimes = faTimes;
-
+  newUserCreated: boolean = false;
   name: string = '';
   password: string = '';
   invalidLoggin: boolean = false;
@@ -64,5 +64,13 @@ export class LoginComponent {
   }
   close() {
     this.activeModal.close('Close click');
+  }
+  onNewSignUp() {
+    this.signUp = false;
+    this.newUserCreated = true;
+  }
+
+  toggleSignUp(): void {
+    this.signUp = !this.signUp;
   }
 }

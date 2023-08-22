@@ -19,8 +19,9 @@ p {
     font-family: 'Cormorant Garamond', serif;
 }
 
-.heightfit {
+.fit-content {
     height: fit-content;
+    width: fit-content;
 }
 .dayMode-warning {
     color: purple !important;

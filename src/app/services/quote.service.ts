@@ -8,7 +8,7 @@ import { Quote } from '../models/Quote';
 })
 export class QuoteService {
 
-  private apiUrl = 'rrlibrary.azurewebsites.net/api/';
+  private apiUrl = 'https://rrlibrary.azurewebsites.net/api/';
   constructor(private http: HttpClient) { }
 
   getQuotes(): Observable<HttpResponse<Quote[]>> {

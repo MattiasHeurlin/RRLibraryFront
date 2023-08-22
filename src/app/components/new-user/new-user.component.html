@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="col">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default" >Name:</span>
+            <input type="text" [(ngModel)]="user.name" class="form-control" />
+        </div>
+    </div>
+    <div class="col">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default"  >Password:</span>
+            <input type="password" [(ngModel)]="user.password" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-outline-primary" (click)="createUser()" data-mdb-ripple-color="dark">Signup</button>
+    </div>
+    <p *ngIf="emptyFields" class="text-warning text-center">No Empty Fields</p>
+</div> 
