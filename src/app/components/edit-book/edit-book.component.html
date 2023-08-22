@@ -1,0 +1,31 @@
+<div class="modal-header centerChild">
+    <h4 class="modal-title">Add A New Book</h4>
+</div>
+<div class="modal-body">
+   
+    <div class="input-group mb-3">
+        <span class="input-group-text"   id="inputGroup-sizing-default">Title:</span>
+        <input [(ngModel)]="book.title" type="text" class="form-control">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text"  id="inputGroup-sizing-default">Author:</span>
+        <input [(ngModel)]="book.author" type="text" class="form-control">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text"  id="inputGroup-sizing-default">Published Date - DD-MM-YY</span>
+        <input type="text" [(ngModel)]="book.publishedDate" class="form-control">
+      </div>
+      <div class="form-check">
+        <label class="form-check-label" for="flexCheckChecked">Available</label>
+        <input class="form-check-input" [(ngModel)]="book.isAvailable" type="checkbox" value="" id="flexCheckChecked" checked>
+        
+      </div>
+</div>
+<div class="modal-footer">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn " (click)="close()"><fa-icon class="text-danger fs-3" [icon]="faTimes"></fa-icon></button>
+            <button type="button" class="btn btn-success" (click)="onEditBook()">Confirm Edit</button>
+        </div>
+    </div>
+</div>

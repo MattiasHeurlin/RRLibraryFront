@@ -1,0 +1,9 @@
+.modal-header, .modal-footer {
+    background-color: rgb(0, 4, 42);
+    color: white;
+}
+
+.modal-body {
+    background-color: rgb(0, 19, 44);
+    color: rgb(255, 255, 255);
+}

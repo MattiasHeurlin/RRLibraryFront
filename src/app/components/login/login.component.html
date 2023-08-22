@@ -1,0 +1,26 @@
+    <div class="modal-header centerChild">
+        <h4 class="modal-title">Login</h4>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-outline mb-4">
+                <label class="form-label text-info" for="nameInput">Name:</label>
+                <input type="text" id="nameInput" class="form-control" [(ngModel)]="name" name="name" />
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label text-info" for="passInput">Password:</label>
+                <input type="password" id="passInput" class="form-control" [(ngModel)]="password" name="password" />
+            </div>
+        </form>
+        <div class="centerChild">
+            <p *ngIf="invalidLoggin" class="text-warning text-center">{{invalidLogginMsg}}</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="container">
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn " (click)="close()"><fa-icon class="text-danger fs-3" [icon]="faTimes"></fa-icon></button>
+                <button type="button" class="btn btn-success" (click)="onLogin()">Login</button>
+            </div>
+        </div>
+    </div>
