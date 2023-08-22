@@ -1,17 +1,9 @@
 <div class="container shadow-sm p-3  m-2  rounded">
     <div class="row">
         <div class="col">
-            <h3>{{ book.title }}</h3>
+            <h3 class="fs-3">{{ book.title }}</h3>
         </div>
-        <div class="col d-flex gap-2">
-            <p class="">
-                Available:
-            </p>
-            <div class="col">
-                <fa-icon *ngIf="!book.isAvailable" class="text-danger fs-5" [icon]="faTimes"></fa-icon>
-                <fa-icon *ngIf="book.isAvailable" class="text-success fs-5" [icon]="faCheck"></fa-icon>
-            </div>
-        </div>
+        
     </div>
     <div class="row">
         <div class="col ">
@@ -23,6 +15,15 @@
         <div *ngIf="isLoggedIn" class="col heightFit d-flex gap-2">
             <button type="button" class="btn btn-sm btn-danger" (click)="deleteBook()">Delete</button>
             <button type="button" class="btn btn-sm btn-info" (click)="openEditModal()">Edit</button>
+        </div>
+        <div class="col d-flex gap-2">
+            <p class="">
+                Available:
+            </p>
+            <div class="col">
+                <fa-icon *ngIf="!book.isAvailable" class="text-danger fs-5" [icon]="faTimes"></fa-icon>
+                <fa-icon *ngIf="book.isAvailable" class="text-success fs-5" [icon]="faCheck"></fa-icon>
+            </div>
         </div>
     </div>
 </div>

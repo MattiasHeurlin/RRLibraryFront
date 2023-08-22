@@ -42,7 +42,7 @@
                 <div *ngFor="let quote of quotes">
                     <div class="card p-2">
                         <div class="card-body d-relative">
-                            <blockquote class="card-text">" {{quote.text}} "</blockquote>
+                            <blockquote class="card-text text-center">" {{quote.text}} "</blockquote>
                             <p class="card-subtitle mb-2 text-muted text-center">{{quote.author}}</p> 
                           <fa-icon (click)="deleteQuote(quote)"  class="topleftcorner text-danger fs-5" [icon]="faTimes"></fa-icon>
                         </div>
