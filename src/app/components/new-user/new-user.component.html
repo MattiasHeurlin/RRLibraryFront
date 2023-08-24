@@ -15,4 +15,5 @@
         <button type="button" class="btn btn-outline-primary" (click)="createUser()" data-mdb-ripple-color="dark">Signup</button>
     </div>
     <p *ngIf="emptyFields" class="text-warning text-center">No Empty Fields</p>
+    <p *ngIf="isLoading" class="text-center text-info">Loading...</p>
 </div> 

@@ -12,7 +12,7 @@ export class BooksComponent {
   books: Book[] = [];
   @Input() isLoggedIn!: boolean;
   @Input() dayMode!: boolean;
-
+  isLoading: boolean = false;
   noBooks: boolean = false;
   constructor(
     private bookService: BookService,
@@ -20,9 +20,11 @@ export class BooksComponent {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.bookService.getBooks().subscribe({
       next: (response) => {
         if (response.status === 200 && response.body) {
+          this.isLoading = false;
           this.books = response.body;
         }
       
@@ -30,11 +32,14 @@ export class BooksComponent {
       error: (error) => {
         console.log(error);
           if (error.status === 404) {
+          this.isLoading = false;
           this.noBooks = true;
         } 
       },
     });
   }
+
+  
 
   openAddBook(): void {
     const modalRef = this.modalService.open(AddBookComponent);

@@ -15,6 +15,7 @@ export class NewUserComponent {
     password: '',
   };
   emptyFields: boolean = false;
+  isLoading: boolean = false;
   constructor(private loginService: LoginService) {}
 
   createUser(): void {
@@ -22,16 +23,18 @@ export class NewUserComponent {
       this.emptyFields = true;
       return;
     }
+    this.isLoading = true;
     this.loginService.createUser(this.user).subscribe({
       next: (response: HttpResponse<User>) => {
         console.log(response);
         if (response.status === 200) {
-          
+          this.isLoading = false;
           this.userCreated.emit(true);
           return;
         }
       },
       error: (error: any) => {
+        this.isLoading = false;
         console.log(error);
       },
     });

@@ -5,7 +5,9 @@ body {
 .h-full {
     min-height: 100vh;
 }
-
+.center {
+    margin: 0 auto;
+}
 .centerChild {
     display: flex;
     justify-content: center;

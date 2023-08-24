@@ -13,7 +13,7 @@ import { Token } from '../../models/Token';
 })
 export class LoginComponent {
   @Output() loggedIn = new EventEmitter<boolean>();
-
+  isLoading: boolean = false;
   signUp: boolean = false;
   faTimes = faTimes;
   newUserCreated: boolean = false;
@@ -21,7 +21,10 @@ export class LoginComponent {
   password: string = '';
   invalidLoggin: boolean = false;
   invalidLogginMsg: string = '';
-  constructor(public activeModal: NgbActiveModal, private loginService: LoginService) {}
+  constructor(
+    public activeModal: NgbActiveModal,
+    private loginService: LoginService
+  ) {}
 
   onLogin(): void {
     if (this.name === '' || this.password === '') {
@@ -29,9 +32,10 @@ export class LoginComponent {
       this.invalidLogginMsg = 'Please enter a username and password';
       return;
     }
-
+    this.isLoading = true;
     this.loginService.login(this.name, this.password).subscribe({
       next: (response: HttpResponse<Token>) => {
+        this.isLoading = false;
         if (response.status === 200) {
           console.log(response);
           const token = response.body?.token;
@@ -46,6 +50,7 @@ export class LoginComponent {
         this.invalidLogginMsg = 'Unknown error';
       },
       error: (error: any) => {
+        this.isLoading = false;
         if (error.status === 404) {
           this.invalidLoggin = true;
           this.invalidLogginMsg = 'User not found';

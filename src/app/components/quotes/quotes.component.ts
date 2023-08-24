@@ -15,20 +15,26 @@ export class QuotesComponent {
   newQuoteAuthor: string = '';
   quotes: Quote[] = [];
   noQuotes: boolean = false;
+  newQuoteLoading: boolean = false;
+  isLoading: boolean = false;
   faTimes = faTimes;
   emptyFields: boolean = false;
   constructor(private quoteService: QuoteService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.quoteService.getQuotes().subscribe({
       next: (response) => {
         if (response.status === 200 && response.body) {
+          this.isLoading = false;
           this.quotes = response.body;
+
         }
       },
       error: (error) => {
         console.log(error);
         if (error.status === 404) {
+          this.isLoading = false;
           this.noQuotes = true;
         }
       },
@@ -40,10 +46,12 @@ export class QuotesComponent {
       this.emptyFields = true;
       return;
     }
+    this.newQuoteLoading = true;
     const quote: Quote = new Quote(this.newQuoteText, this.newQuoteAuthor);
     this.quoteService.addQuote(quote).subscribe({
       next: (response) => {
         if (response.status === 201) {
+          this.newQuoteLoading = false;
           this.newQuoteText = '';
           this.newQuoteAuthor = '';
           this.emptyFields = false;
@@ -52,6 +60,7 @@ export class QuotesComponent {
       },
       error: (error) => {
         console.log(error);
+        this.newQuoteLoading = false;
       },
     });
   }

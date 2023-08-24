@@ -11,7 +11,7 @@ import { BooksComponent } from './components/books/books.component';
 export class AppComponent {
   title: string = 'FrontEnd';
   isLoggedIn: boolean = false;
-
+  
   onLibraryPage: boolean = true;
   dayMode: boolean = true;
 

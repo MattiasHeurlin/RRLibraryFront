@@ -33,5 +33,6 @@
                     [icon]="faTimes"></fa-icon></button>
             <button *ngIf="!signUp" type="button" class="btn btn-success" (click)="onLogin()">Login</button>
         </div>
+        <p *ngIf="isLoading" class="text-center text-info">Loading...</p>
     </div>
 </div>

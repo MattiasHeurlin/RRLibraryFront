@@ -1,18 +1,24 @@
 <div class="container">
     <div class="row mt-2">
-            <div class="col ">
-                <h2 class="text-info">Books</h2>
-            </div>
-            <div *ngIf="isLoggedIn" class="col centerChild">
-                <button (click)="openAddBook()" type="button" class="btn btn-info">Add New Book</button>
-            </div>
+        <div class="col ">
+            <h2 class="text-info">Books</h2>
+        </div>
+        <div *ngIf="isLoggedIn" class="col centerChild">
+            <button (click)="openAddBook()" type="button" class="btn btn-info">Add New Book</button>
+        </div>
     </div>
     <div class="row">
         <div class="container">
-            <div *ngFor="let book of books" class="row">
-                <app-book (listUpdate)="ngOnInit()" (bookDeleted)="onDeleteBook(book)" [isLoggedIn]="isLoggedIn" [book]="book"></app-book>
-            </div>
+            <ng-container *ngIf="!isLoading; else loading">
+                <div *ngFor="let book of books" class="row">
+                    <app-book (listUpdate)="ngOnInit()" (bookDeleted)="onDeleteBook(book)" [isLoggedIn]="isLoggedIn"
+                        [book]="book"></app-book>
+                </div>
+            </ng-container>
+           <ng-template #loading> <p class=" text-center text-info fs-3">Loading..</p> </ng-template>
         </div>
-        <p [ngClass]="{'dayMode-warning': dayMode}" class="mt-4 text-center text-warning" *ngIf="noBooks">Looks Empty - Try Adding A Book!</p>
+
+        <p [ngClass]="{'dayMode-warning': dayMode}" class="mt-4 text-center text-warning" *ngIf="noBooks">Looks Empty -
+            Try Adding A Book!</p>
     </div>
 </div>
