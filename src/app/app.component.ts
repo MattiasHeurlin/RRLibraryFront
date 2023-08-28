@@ -11,7 +11,6 @@ import { BooksComponent } from './components/books/books.component';
 export class AppComponent {
   title: string = 'FrontEnd';
   isLoggedIn: boolean = false;
-  
   onLibraryPage: boolean = true;
   dayMode: boolean = true;
 
@@ -41,12 +40,14 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('token'))
-      this.isLoggedIn = true;
+    if (localStorage.getItem('token')) this.isLoggedIn = true;
+    if (localStorage.getItem('preferNightMode')) this.dayMode = false;
+
   }
 
   toggleDayMode(): void {
     this.dayMode = !this.dayMode;
+    if (!this.dayMode) localStorage.setItem('preferNightMode', 'true');
+    else localStorage.removeItem('preferNightMode');
   }
-
 }
